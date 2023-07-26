@@ -2,15 +2,13 @@
 
 ## Challenge Brief
 
-Your task is to develop a web application that can visualize moving vehicles on a map. This project will involve the use of SvelteKit, TypeScript, and a map rendering library of your choice (MapGL, LeafletJS, etc.). The vehicle route and data will be simulated from a static route path file implemented server-side with SvelteKit SSR to preload initial locations.
+Your task is to develop a web application that visualizes moving vehicles on a map. The project involves using SvelteKit, TypeScript, and a map rendering library such as MapGL, LeafletJS, etc. The vehicles route data is initially static and will be simulated from a static route path file.
 
 ## Endpoints
 
-You should create an endpoint as follows:
-
 **GET /api/routes/:id**
 
-The endpoint takes an `id` parameter representing a specific vehicle. It will then respond with a JSON object indicating the vehicle's real-time location, following a set of static predetermined coordinates.
+This endpoint accepts an `id` which corresponds to a specific vehicle. It will return a JSON object detailing the location of the vehicle based on the static route path simulation.
 
 Example response:
 
@@ -24,32 +22,36 @@ Example response:
 }
 ```
 
-## Task Specifications
+## Task Requirements
 
-1. **Loading the App**: When the site is opened, SvelteKit's server-side rendering (SSR) should preload the initial whereabouts of the vehicles. 
+Your application should meet the following requirements:
 
-2. **Fetching Data**: The client app should make regular requests to the '/api/routes/:id' endpoint to fetch the current GPS location of each vehicle and accordingly update the position of markers on the map.
+1. **Rendering**: Utilize SvelteKit's server-side rendering (SSR) to preload the initial locations of the vehicles when the application loads. 
 
-3. **Visualizing Data**: Each vehicle should be plotted on the map using a moving marker. The marker moves to reflect the vehicle's updated location.
+2. **Fetching Data**: Periodically fetch the real-time locations of each vehicle from the '/api/routes/:id' endpoint and update the vehicle markers on the map accordingly.
 
-4. **Extra feature**: The user should be able to click on a individual vehicle marker to load a tooltip information about the vehicle (e.g. name, plate number, driver, load id etc.).
+3. **Visualizing Data**: Each vehicle's real-time location should be plotted on the map using a moving marker.
 
-5. **TypeScript**: The entire application should be written utilizing TypeScript for static type checking. Appropriate types must be defined for handling data and props throughout the app.
+4. **User Interaction**: Enable a tooltip display with detailed information (name, plate number, driver, load id, etc.) when a user clicks on a vehicle marker.
 
-## MapGL /LeafletJS
+5. **TypeScript**: Use TypeScript for static type checking in the application.
 
-While MapGL is suggested for rendering map visuals, you have the autonomy to use another library of your choice, such as LeafletJS, if you prefer. 
+## Bonus Tasks
 
-## Submission & Evaluation
+To level up your submission, you can implement the following additional tasks:
 
-To submit your solution, please follow these steps:
+1. **PostgreSQL Integration**: Shift from using a static route path file to load vehicle and route data from a PostgreSQL database.
 
-1. **Fork** this repository
-2. **Clone** the forked repository into your local environment
-3. Develop your solution
-4. **Push** your final changes
-5. Create a **Pull Request** in this repository for review
+2. **Docker Compose Setup**: Use Docker Compose to set up and run your PostgreSQL database and application. Provide a `docker-compose.yml` that starts a PostgreSQL service and (if you can) a service for the web application too.
 
-Your submission will be assessed on its fulfillment of the requirements, code quality, and organization, as well as the accurate use of TypeScript.
+## Submission Guidelines
 
-## Good luck!
+1. Fork this repository
+2. Clone your forked repository into your local environment
+3. Build your solution
+4. Push your changes to your forked repository
+5. Submit a pull request to this repository for review
+
+Your submission will be evaluated based on how well you meet the requirements, your code structure and organization, and your use of TypeScript.
+
+Good luck!
