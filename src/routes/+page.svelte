@@ -2,8 +2,12 @@
 	export let data;
 </script>
 
-<pre>
-	{#each data.positions as pos}
-		{pos.coordinates} <br />
+<code>
+	Start time: {data.tourStartTime}
+</code>
+
+<code>
+	{#each data.route.positions as pos}
+		<pre>{pos.coordinates}</pre>
 	{/each}
-</pre>
+</code>
