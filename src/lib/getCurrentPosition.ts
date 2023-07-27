@@ -1,18 +1,16 @@
 import { route } from '$lib/route';
+import { RATE } from '$lib/constants';
 
 const { positions } = route;
 
-const RATE = 1000;
-
-export const getCurrentPosition = (startTime?: Date) => {
+export const getCurrentPosition = (startTime: Date) => {
 	const now = Date.now();
-	const startTimeStamp = startTime ? startTime.getTime() : now;
-	const timePassed = now - startTimeStamp;
+	const timePassed = now - startTime.getTime();
 	const numberOfStops = positions.length;
 	const stop = Math.floor(timePassed / RATE);
 	return {
 		stop,
-		position: positions[(stop % numberOfStops) - 1],
+		position: positions[stop % numberOfStops],
 		routeId: route.id
 	};
 };

@@ -9,7 +9,7 @@
 		const source = new EventSource('stream', {
 			withCredentials: false
 		});
-		source.addEventListener('time', (e) => {
+		source.addEventListener('position', (e) => {
 			console.log(e.data);
 		});
 		return () => {
