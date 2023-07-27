@@ -1,7 +1,6 @@
 import type { EventEmitter } from 'node:events';
 
-export function createSSE(last_id: string, retry = 0) {
-	const id = last_id;
+export const createSSE = (retry = 0) => {
 	const { readable, writable } = new TransformStream({
 		start(controller) {
 			controller.enqueue(': hello\n\n');
@@ -37,4 +36,4 @@ export function createSSE(last_id: string, retry = 0) {
 			eventEmitter.off(event, listener);
 		}
 	};
-}
+};
