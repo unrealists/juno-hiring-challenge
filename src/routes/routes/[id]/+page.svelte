@@ -55,7 +55,13 @@
 		bind:this={mapComponent}
 		on:ready={onMapReady}
 	>
-		<Marker lng={position[0]} lat={position[1]} />
+		<Marker lng={position[0]} lat={position[1]} label={`Route: ${data.routeId}`} popupOptions={{}}>
+			<ul class="popup" slot="popup">
+				<li>Route: {data.routeId}</li>
+				<li>Driver: Some Dude</li>
+				<li>Licence: B-DX-12873</li>
+			</ul>
+		</Marker>
 		<NavigationControl />
 		<GeolocateControl options={{ some: 'control-option' }} />
 		<ScaleControl />
@@ -65,5 +71,10 @@
 <style>
 	.map {
 		height: 400px;
+	}
+	.popup {
+		font-family: monospace;
+		margin: 0;
+		padding: 1rem;
 	}
 </style>
