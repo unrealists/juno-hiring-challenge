@@ -41,26 +41,24 @@
 	};
 </script>
 
-{#if position}
-	<code>
-		<pre>Route: {data.routeId}</pre>
-		<pre>Current sample: {stop}</pre>
-		<pre>Current position: {position}</pre>
-	</code>
-	<div class="map">
-		<Map
-			accessToken="pk.eyJ1IjoibWlhc3RvZHdhIiwiYSI6ImNsa2w4dzZ1czBsZWgzcGw5ZTJuZDVhdGoifQ.aZab-1LoXp8A1ljFlahRFw"
-			options={{ scrollZoom: false }}
-			bind:this={mapComponent}
-			on:ready={onMapReady}
-		>
-			<Marker lng={position[0]} lat={position[1]} />
-			<NavigationControl />
-			<GeolocateControl options={{ some: 'control-option' }} />
-			<ScaleControl />
-		</Map>
-	</div>
-{/if}
+<code>
+	<pre>Route: {data.routeId}</pre>
+	<pre>Current sample: {stop}</pre>
+	<pre>Current position: {position}</pre>
+</code>
+<div class="map">
+	<Map
+		accessToken="pk.eyJ1IjoibWlhc3RvZHdhIiwiYSI6ImNsa2w4dzZ1czBsZWgzcGw5ZTJuZDVhdGoifQ.aZab-1LoXp8A1ljFlahRFw"
+		options={{ scrollZoom: false }}
+		bind:this={mapComponent}
+		on:ready={onMapReady}
+	>
+		<Marker lng={position[0]} lat={position[1]} />
+		<NavigationControl />
+		<GeolocateControl options={{ some: 'control-option' }} />
+		<ScaleControl />
+	</Map>
+</div>
 
 <style>
 	.map {
