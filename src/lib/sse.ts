@@ -3,19 +3,16 @@ import type { EventEmitter } from 'node:events';
 export const createSSE = (retry = 0) => {
 	const { readable, writable } = new TransformStream({
 		start(controller) {
-			controller.enqueue(': hello\n\n');
-
 			if (retry > 0) controller.enqueue(`retry: ${retry}\n\n`);
 		},
 		transform({ event, data }, controller) {
-			let msg = `id: ${event}-${Date.now()}\n`;
-			if (event) msg += `event: ${event}\n`;
-			if (typeof data === 'string') {
-				msg += 'data: ' + data.trim().replace(/\n+/gm, '\ndata: ') + '\n';
-			} else {
-				msg += `data: ${JSON.stringify(data)}\n`;
-			}
-			controller.enqueue(msg + '\n');
+			const payload = {
+				id: `id: ${event}-${Date.now()}\n`,
+				event: `event: ${event}\n`,
+				data: `data: ${JSON.stringify(data)}\n\n`
+			};
+			const message = payload.id + payload.event + payload.data;
+			controller.enqueue(message + '\n');
 		}
 	});
 
