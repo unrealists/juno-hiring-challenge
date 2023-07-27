@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type { CurrentPosition } from '$lib/getCurrentPosition.js';
-	import type { Route } from '$lib/route.js';
 	import { onMount } from 'svelte';
 
 	export let data;
-	let position: Route['positions'][0] = data.position;
+	let position: CurrentPosition['position'] = data.position;
 
 	onMount(() => {
 		const source = new EventSource('/stream-position', {
