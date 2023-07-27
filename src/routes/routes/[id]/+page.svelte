@@ -2,6 +2,8 @@
 	import { Map, Marker, controls } from '@beyonk/svelte-mapbox';
 	import type { CurrentPosition } from '$lib/getCurrentPosition.js';
 	import { onMount } from 'svelte';
+	import { env } from '$env/dynamic/public';
+
 	const { GeolocateControl, NavigationControl, ScaleControl } = controls;
 
 	export let data;
@@ -48,7 +50,7 @@
 </code>
 <div class="map">
 	<Map
-		accessToken="pk.eyJ1IjoibWlhc3RvZHdhIiwiYSI6ImNsa2w4dzZ1czBsZWgzcGw5ZTJuZDVhdGoifQ.aZab-1LoXp8A1ljFlahRFw"
+		accessToken={env.PUBLIC_MAPBOX_API_KEY}
 		options={{ scrollZoom: false }}
 		bind:this={mapComponent}
 		on:ready={onMapReady}
