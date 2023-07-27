@@ -15,7 +15,6 @@ export const createSSE = (retry = 0) => {
 			} else {
 				msg += `data: ${JSON.stringify(data)}\n`;
 			}
-			console.log(msg);
 			controller.enqueue(msg + '\n');
 		}
 	});
