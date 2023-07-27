@@ -3,7 +3,8 @@
 	import { onMount } from 'svelte';
 
 	export let data;
-	let position: CurrentPosition['position'] = data.position;
+	let position = data.position;
+	let stop = data.stop;
 
 	onMount(() => {
 		const source = new EventSource('/stream-position', {
@@ -13,6 +14,7 @@
 			// TODO: implement typeguard instead of typecasting
 			const currentPosition = JSON.parse(e.data) as CurrentPosition;
 			position = currentPosition.position;
+			stop = currentPosition.stop;
 		});
 		return () => {
 			source.close();
@@ -21,11 +23,7 @@
 </script>
 
 <code>
-	Start time: {data.startTime}
+	<pre>Tour start time: {data.startTime}</pre>
+	<pre>Current sample: {stop}</pre>
+	<pre>Current position: {position}</pre>
 </code>
-
-<p>
-	<code>
-		{position}
-	</code>
-</p>
