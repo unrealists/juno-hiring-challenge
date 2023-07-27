@@ -5,6 +5,6 @@ import { getCurrentPosition } from '$lib/getCurrentPosition';
 export const emitter = new EventEmitter();
 
 setInterval(() => {
-	const position = getCurrentPosition(TOUR_START_TIME);
+	const position = getCurrentPosition('r1', TOUR_START_TIME);
 	emitter.emit('position', position);
 }, RATE);
