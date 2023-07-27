@@ -22,6 +22,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@beyonk/svelte-mapbox@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "@beyonk/svelte-mapbox@npm:9.1.0"
+  peerDependencies:
+    svelte: ^3.0.0
+  checksum: bd69ad5a0a61676cdba05a45a6263bdeffa3d06deea762e44cf07aad42da05e22b5791957b8e9e27830c941b4e804be49cd0dcb35e13c23cbee2214682ebd4d4
+  languageName: node
+  linkType: hard
+
 "@esbuild/android-arm64@npm:0.18.17":
   version: 0.18.17
   resolution: "@esbuild/android-arm64@npm:0.18.17"
@@ -2019,6 +2028,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "juno-hiring-challenge@workspace:."
   dependencies:
+    "@beyonk/svelte-mapbox": ^9.1.0
     "@playwright/test": ^1.28.1
     "@sveltejs/adapter-auto": ^2.0.0
     "@sveltejs/kit": ^1.20.4

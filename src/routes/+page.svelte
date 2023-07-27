@@ -1,8 +1,12 @@
 <script lang="ts">
+	import { Map, Marker, controls } from '@beyonk/svelte-mapbox';
 	import type { CurrentPosition } from '$lib/getCurrentPosition.js';
 	import { onMount } from 'svelte';
+	const { GeolocateControl, NavigationControl, ScaleControl } = controls;
 
 	export let data;
+
+	let mapComponent: Map;
 	let position = data.position;
 	let stop = data.stop;
 
@@ -27,3 +31,21 @@
 	<pre>Current sample: {stop}</pre>
 	<pre>Current position: {position}</pre>
 </code>
+
+<div class="map">
+	<Map
+		accessToken="pk.eyJ1IjoibWlhc3RvZHdhIiwiYSI6ImNsa2w4dzZ1czBsZWgzcGw5ZTJuZDVhdGoifQ.aZab-1LoXp8A1ljFlahRFw"
+		options={{ scrollZoom: false }}
+		bind:this={mapComponent}
+	>
+		<NavigationControl />
+		<GeolocateControl options={{ some: 'control-option' }} />
+		<ScaleControl />
+	</Map>
+</div>
+
+<style>
+	.map {
+		height: 400px;
+	}
+</style>
