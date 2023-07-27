@@ -7,6 +7,7 @@
 	export let data;
 
 	let mapComponent: Map;
+
 	let position = data.position;
 	let stop = data.stop;
 
@@ -25,24 +26,19 @@
 		};
 	});
 
+	$: {
+		recenterMap(position);
+	}
+
 	const recenterMap = (coordinates: typeof position) => {
 		if (!mapComponent) return;
 		mapComponent.setCenter(coordinates);
-		mapComponent.setZoom(13);
-	};
-
-	const flyto = (coordinates: typeof position) => {
-		if (!mapComponent) return;
-		mapComponent.flyTo({ center: coordinates });
+		mapComponent.setZoom(15);
 	};
 
 	const onMapReady = (e: Event) => {
 		recenterMap(position);
 	};
-
-	$: {
-		recenterMap(position);
-	}
 </script>
 
 <code>
