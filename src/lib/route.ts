@@ -3,12 +3,12 @@ export interface Position {
 }
 
 export interface Route {
-	name: string;
+	id: string;
 	positions: [number, number][];
 }
 
 export const route: Route = {
-	name: 'r1',
+	id: 'r1',
 	positions: [
 		[13.41225, 52.5239],
 		[13.41516, 52.52254],

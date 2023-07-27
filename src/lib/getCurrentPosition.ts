@@ -1,20 +1,19 @@
-import type { Route } from '$lib/route';
+import { route } from '$lib/route';
 
-interface Params {
-	positions: Route['positions'];
-	rate?: number;
-	startTime?: Date;
-}
+const { positions } = route;
 
-export const getCurrentPosition = ({ positions, rate = 1000, startTime }: Params) => {
+const RATE = 1000;
+
+export const getCurrentPosition = (startTime?: Date) => {
 	const now = Date.now();
 	const startTimeStamp = startTime ? startTime.getTime() : now;
 	const timePassed = now - startTimeStamp;
 	const numberOfStops = positions.length;
-	const stop = Math.floor(timePassed / rate);
+	const stop = Math.floor(timePassed / RATE);
 	return {
 		stop,
-		position: positions[(stop % numberOfStops) - 1]
+		position: positions[(stop % numberOfStops) - 1],
+		routeId: route.id
 	};
 };
 
