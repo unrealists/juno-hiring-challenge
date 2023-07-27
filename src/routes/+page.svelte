@@ -12,10 +12,10 @@
 	let stop = data.stop;
 
 	onMount(() => {
-		const source = new EventSource('/stream-position', {
+		const source = new EventSource('/api/sse-routes/r1', {
 			withCredentials: false
 		});
-		source.addEventListener('position', (e) => {
+		source.addEventListener('r1-position', (e) => {
 			// TODO: implement typeguard instead of typecasting
 			const currentPosition = JSON.parse(e.data) as CurrentPosition;
 			position = currentPosition.position;
@@ -42,7 +42,7 @@
 </script>
 
 <code>
-	<pre>Tour start time: {data.startTime}</pre>
+	<pre>Route: {data.routeId}</pre>
 	<pre>Current sample: {stop}</pre>
 	<pre>Current position: {position}</pre>
 </code>
