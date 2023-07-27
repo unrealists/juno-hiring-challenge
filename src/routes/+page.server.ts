@@ -1,12 +1,11 @@
+import { TOUR_START_TIME } from '$lib/constants.js';
 import { getCurrentPosition } from '$lib/getCurrentPosition.js';
 
-export const load = async ({ url }) => {
-	const start = url.searchParams.get('start');
-	const startTime = start ? new Date(start) : undefined;
-	const { position, stop } = getCurrentPosition(startTime);
+export const load = async () => {
+	const { position, stop } = getCurrentPosition(TOUR_START_TIME);
 
 	return {
-		startTime,
+		startTime: TOUR_START_TIME,
 		position,
 		stop
 	};
