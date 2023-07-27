@@ -11,9 +11,11 @@ export const getCurrentPosition = ({ positions, rate = 1000, startTime }: Params
 	const startTimeStamp = startTime ? startTime.getTime() : now;
 	const timePassed = now - startTimeStamp;
 	const numberOfStops = positions.length;
-	const currentStop = Math.floor(timePassed / rate);
+	const stop = Math.floor(timePassed / rate);
 	return {
-		currentStop,
-		currentPosition: positions[(currentStop % numberOfStops) - 1]
+		stop,
+		position: positions[(stop % numberOfStops) - 1]
 	};
 };
+
+export type CurrentPosition = ReturnType<typeof getCurrentPosition>;
