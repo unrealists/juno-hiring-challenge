@@ -1,6 +1,7 @@
-import { TOUR_START_TIME } from '$lib/constants.js';
-import { getCurrentPosition } from '$lib/getCurrentPosition.js';
+import type { CurrentPosition } from '$lib/getCurrentPosition';
 
 export const load = async () => {
-	return getCurrentPosition('r1', TOUR_START_TIME);
+	const res = await fetch('http://localhost:5173/api/routes/r1');
+	const data: CurrentPosition = await res.json();
+	return data;
 };
