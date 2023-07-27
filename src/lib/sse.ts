@@ -21,9 +21,9 @@ export const createSSE = (retry = 0) => {
 	return {
 		readable,
 		async subscribe(eventEmitter: EventEmitter, event: string) {
-			function listener(data: unknown) {
+			const listener = (data: unknown) => {
 				writer.write({ event, data });
-			}
+			};
 
 			eventEmitter.on(event, listener);
 			await writer.closed.catch((e) => {
