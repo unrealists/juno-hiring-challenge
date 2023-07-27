@@ -12,7 +12,7 @@ export const createSSE = (retry = 0) => {
 				data: `data: ${JSON.stringify(data)}\n\n`
 			};
 			const message = payload.id + payload.event + payload.data;
-			controller.enqueue(message + '\n');
+			controller.enqueue(message);
 		}
 	});
 
