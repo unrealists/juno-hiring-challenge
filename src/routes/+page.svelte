@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Position } from './route.js';
+	import type { Route } from '$lib/route.js';
 
 	export let data;
-	let position: Position;
+	let position: Route['positions'][0];
 
 	const getCurrentLocation = async () => {
 		const res = await fetch('/getCurrentLocation?start=2023-07-27T00:58:30');
@@ -17,16 +17,16 @@
 <p>
 	<button on:click={getCurrentLocation}>where am I</button>
 	<code>
-		{position?.coordinates}
+		{position}
 	</code>
 </p>
 
 <h1>
-	route: {data.route.route}
+	route: {data.route.name}
 </h1>
 
 <code>
 	{#each data.route.positions as pos}
-		<pre>{pos.coordinates}</pre>
+		<pre>{pos}</pre>
 	{/each}
 </code>

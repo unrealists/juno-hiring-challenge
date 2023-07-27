@@ -1,4 +1,4 @@
-import { route } from './route';
+import { route } from '$lib/route';
 
 export const load = ({ url }) => {
 	const start = url.searchParams.get('start');
