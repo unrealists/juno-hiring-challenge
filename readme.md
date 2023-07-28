@@ -14,11 +14,11 @@ Example response:
 
 ```json
 {
-  "id": "route1",
-  "location": {
-    "lat": 37.7749, 
-    "lng": -122.4194 
-  }
+	"id": "route1",
+	"location": {
+		"lat": 37.7749,
+		"lng": -122.4194
+	}
 }
 ```
 
@@ -26,7 +26,7 @@ Example response:
 
 Your application should meet the following requirements:
 
-1. **Rendering**: Utilize SvelteKit's server-side rendering (SSR) to preload the initial locations of the vehicles when the application loads. 
+1. **Rendering**: Utilize SvelteKit's server-side rendering (SSR) to preload the initial locations of the vehicles when the application loads.
 
 2. **Fetching Data**: Periodically fetch the real-time locations of each vehicle from the '/api/routes/:id' endpoint and update the vehicle markers on the map accordingly.
 

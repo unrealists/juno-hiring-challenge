@@ -1,0 +1,31 @@
+version: '3'
+services:
+  app-node:
+    image: svelte-docker-node
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deploy
+    ports:
+      - 3000:3000
+    environment:
+      PUBLIC_MAPBOX_API_KEY: '${PUBLIC_MAPBOX_API_KEY}'
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    restart: always
+    volumes:
+      - ./.volumes/db:/var/lib/postgresql/data
+      - ./init_db:/docker-entrypoint-initdb.d
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: '${POSTGRES_ROOT_USER}'
+      POSTGRES_PASSWORD: '${POSTGRES_ROOT_PASSWORD}'
+      POSTGRES_DB: '${POSTGRES_DB}'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -d $POSTGRES_DB']
+      interval: 10s
+      timeout: 5s
+      retries: 5
